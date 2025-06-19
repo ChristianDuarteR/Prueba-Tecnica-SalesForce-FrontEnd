@@ -29,12 +29,26 @@ export default function CrearCliente({ onNuevo }) {
             <h2 className="text-lg font-semibold">Crear Cliente</h2>
             <form onSubmit={handleSubmit} className="space-y-2">
                 <input
+                    style={{
+                        backgroundColor: '#1e1e1e',
+                        color: '#fff',
+                        border: '1px solid #555',
+                        borderRadius: '5px',
+                        padding: '0.5rem',
+                    }}
                     placeholder="Nombre"
                     value={nombre}
                     onChange={e => setNombre(e.target.value)}
                     className="border p-2 w-full rounded"
                 />
                 <input
+                    style={{
+                        backgroundColor: '#1e1e1e',
+                        color: '#fff',
+                        border: '1px solid #555',
+                        borderRadius: '5px',
+                        padding: '0.5rem',
+                    }}
                     placeholder="Email"
                     value={email}
                     onChange={e => setEmail(e.target.value)}

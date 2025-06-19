@@ -26,12 +26,14 @@ export default function ClienteCard({ cliente }) {
 
     return (
         <div style={{
-            background: '#fdfdfd',
-            border: '1px solid #ddd',
+            background: '#2e2e2e',
+            color: '#f0f0f0',
+            border: '1px solid #444',
             borderRadius: '10px',
             padding: '1rem',
-            boxShadow: '2px 2px 6px rgba(0,0,0,0.05)'
+            boxShadow: '0 2px 4px rgba(0,0,0,0.3)'
         }}>
+
             <div style={{ marginBottom: '0.5rem' }}>
                 <strong>{cliente.nombre}</strong><br />
                 <small style={{ color: '#777' }}>{cliente.email}</small>
@@ -44,7 +46,8 @@ export default function ClienteCard({ cliente }) {
                 style={{
                     marginTop: '0.5rem',
                     fontSize: '0.9rem',
-                    background: '#eee',
+                    background: '#444',
+                    color: '#fff',
                     border: 'none',
                     borderRadius: '4px',
                     padding: '0.25rem 0.5rem',

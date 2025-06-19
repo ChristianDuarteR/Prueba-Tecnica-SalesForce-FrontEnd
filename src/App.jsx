@@ -23,10 +23,19 @@ export default function App() {
 
     return (
         <main style={{ maxWidth: '960px', margin: '0 auto', padding: '2rem' }}>
-            <h1 style={{ fontSize: '2rem', color: '#2c3e50' }}> Gestión de Clientes Sky Logistics</h1>
+            <h1 style={{
+                    fontSize: '2.5rem',
+                    color: '#4fc3f7',              // Azul claro (resalta en fondo oscuro)
+                    fontWeight: 'bold',
+                    letterSpacing: '0.5px',
+                    marginBottom: '1rem',
+                    textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+                }}
+            >
+                Gestión de Clientes Sky Logistics
+            </h1>
 
             <CrearCliente onNuevo={agregarCliente} />
-
             <input
                 type="search"
                 placeholder="Buscar cliente..."
