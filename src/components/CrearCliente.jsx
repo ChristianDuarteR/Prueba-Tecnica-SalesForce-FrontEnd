@@ -4,8 +4,8 @@ const API = 'http://localhost:8080/api/v1';
 
 export default function CrearCliente({ onCreado }) {
     const [nombre, setNombre] = useState('');
-    const [email, setEmail] = useState('');
-    const [error, setError] = useState('');
+    const [email, setEmail]   = useState('');
+    const [error, setError]   = useState('');
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -17,9 +17,11 @@ export default function CrearCliente({ onCreado }) {
                 body: JSON.stringify({ nombre, email }),
             });
             if (!res.ok) throw new Error('No se pudo crear cliente');
-            await res.json();
-            setNombre(''); setEmail('');
-            onCreado();
+
+            const nuevoCliente = await res.json();   // 👈 obtenemos el objeto creado
+            setNombre('');
+            setEmail('');
+            onCreado(nuevoCliente);                  // 👈 notificamos al padre
         } catch (err) {
             setError(err.message);
         }
@@ -28,6 +30,7 @@ export default function CrearCliente({ onCreado }) {
     return (
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             {error && <p style={{ color: 'red' }}>{error}</p>}
+
             <input
                 placeholder="Nombre"
                 value={nombre}

@@ -33,7 +33,7 @@ export default function App() {
                 Gestión de Clientes Sky Logistics
             </h1>
 
-            <CrearCliente onNuevo={agregarCliente} />
+            <CrearCliente onCreado={agregarCliente} />
             <input
                 type="search"
                 placeholder="Buscar cliente..."
