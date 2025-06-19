@@ -1,66 +1,56 @@
 import { useState } from 'react';
+
 const API = 'http://localhost:8080/api/v1';
 
-export default function CrearCliente({ onNuevo }) {
+export default function CrearCliente({ onCreado }) {
     const [nombre, setNombre] = useState('');
-    const [email,  setEmail]  = useState('');
-    const [loading, setLoading] = useState(false);
+    const [email, setEmail] = useState('');
+    const [error, setError] = useState('');
 
     async function handleSubmit(e) {
         e.preventDefault();
-        setLoading(true);
+        setError('');
         try {
             const res = await fetch(`${API}/clientes`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ nombre, email }),
             });
-            if (!res.ok) throw new Error('Error al crear cliente');
-            const cliente = await res.json();
-            onNuevo(cliente);
+            if (!res.ok) throw new Error('No se pudo crear cliente');
+            await res.json();
             setNombre(''); setEmail('');
-        } finally {
-            setLoading(false);
+            onCreado();
+        } catch (err) {
+            setError(err.message);
         }
     }
 
     return (
-        <section className="space-y-3 border p-4 rounded-lg shadow">
-            <h2 className="text-lg font-semibold">Crear Cliente</h2>
-            <form onSubmit={handleSubmit} className="space-y-2">
-                <input
-                    style={{
-                        backgroundColor: '#1e1e1e',
-                        color: '#fff',
-                        border: '1px solid #555',
-                        borderRadius: '5px',
-                        padding: '0.5rem',
-                    }}
-                    placeholder="Nombre"
-                    value={nombre}
-                    onChange={e => setNombre(e.target.value)}
-                    className="border p-2 w-full rounded"
-                />
-                <input
-                    style={{
-                        backgroundColor: '#1e1e1e',
-                        color: '#fff',
-                        border: '1px solid #555',
-                        borderRadius: '5px',
-                        padding: '0.5rem',
-                    }}
-                    placeholder="Email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    className="border p-2 w-full rounded"
-                />
-                <button
-                    disabled={loading}
-                    className="bg-indigo-600 text-white px-4 py-2 rounded w-full disabled:opacity-50"
-                >
-                    {loading ? 'Creando…' : 'Crear'}
-                </button>
-            </form>
-        </section>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            <input
+                placeholder="Nombre"
+                value={nombre}
+                onChange={e => setNombre(e.target.value)}
+                required
+                style={inputStyle}
+            />
+            <input
+                placeholder="Email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                required
+                style={inputStyle}
+            />
+            <button type="submit">Crear Cliente</button>
+        </form>
     );
 }
+
+const inputStyle = {
+    backgroundColor: '#f9f9f9',
+    color: '#1a1a2e',
+    border: '1px solid #ccc',
+    padding: '0.6rem',
+    borderRadius: '5px',
+};

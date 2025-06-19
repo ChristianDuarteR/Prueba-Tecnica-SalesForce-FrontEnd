@@ -26,13 +26,15 @@ export default function ClienteCard({ cliente }) {
 
     return (
         <div style={{
-            background: '#2e2e2e',
-            color: '#f0f0f0',
-            border: '1px solid #444',
+            backgroundColor: '#ffffff',
+            border: '1px solid #dbe2ef',
             borderRadius: '10px',
             padding: '1rem',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.3)'
+            boxShadow: '0 2px 5px rgba(0,0,0,0.05)',
+            color: '#1a1a2e',
+
         }}>
+
 
             <div style={{ marginBottom: '0.5rem' }}>
                 <strong>{cliente.nombre}</strong><br />
@@ -44,15 +46,15 @@ export default function ClienteCard({ cliente }) {
             <button
                 onClick={() => setExpand(e => !e)}
                 style={{
-                    marginTop: '0.5rem',
-                    fontSize: '0.9rem',
-                    background: '#444',
-                    color: '#fff',
-                    border: 'none',
+                    backgroundColor: '#ffffff',
+                    color: '#3f72af',
+                    border: '1px solid #3f72af',
+                    padding: '0.4rem 0.8rem',
                     borderRadius: '4px',
-                    padding: '0.25rem 0.5rem',
+                    fontWeight: 'bold',
                     cursor: 'pointer'
                 }}
+
             >
                 {expand ? 'Ocultar entregas' : 'Ver entregas'}
             </button>

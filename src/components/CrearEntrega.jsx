@@ -69,20 +69,14 @@ export default function CrearEntrega({ clienteId, onCreada }) {
                     type="text"
                     readOnly
                     value={`Fecha: ${new Date().toLocaleDateString()}`}
-                    style={{
-                        ...inputStyle,
-                        backgroundColor: '#333',
-                        color: '#ccc',
-                        fontStyle: 'italic',
-                        cursor: 'default'
-                    }}
+                    style={inputStyle}
                 />
 
                 <button
                     type="submit"
                     disabled={loading}
                     style={{
-                        backgroundColor: '#2ecc71',
+                        backgroundColor: '#3f72af',
                         color: '#fff',
                         padding: '0.6rem',
                         border: 'none',
@@ -99,9 +93,10 @@ export default function CrearEntrega({ clienteId, onCreada }) {
 }
 
 const inputStyle = {
-    backgroundColor: '#1e1e1e',
-    color: '#ffffff',
+    backgroundColor: '#f9f9f9',
+    color: '#1a1a2e',
+    border: '1px solid #ccc',
     padding: '0.6rem',
-    borderRadius: '4px',
-    border: '1px solid #555',
+    borderRadius: '5px',
 };
+
